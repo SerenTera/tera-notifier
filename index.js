@@ -9,7 +9,7 @@ let afk=false,			//Set to false always.
 	iconfile='tera.png',//File name of the icon file to use for notification. Put file at tera-notifier base path. ie: tera-proxy/bin/node-modules/tera-notifier/tera.png for example.
 						//File must be png and cannot exceed 1024x1024 px, or over over 200Kb.
 
-	debug=true		//debug
+	debug=false		//debug
 
 	
 module.exports = function notifier(dispatch) {
