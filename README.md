@@ -8,28 +8,42 @@ Uses these modules and FULL credits goes to them. I DID NOT make this module, me
 - node-notifier Dependencies(pre-included in this version already)
 - snoretoast
 - notifu
-- Full list can be derived from original docs file
+- Full list of original documentations can be derived from original docs file
 
-## Quick start example:
+## Users
+In index.js, there is 1 variable that concerns you, that is 'AFK_TIMEOUT' in index.js. By default, 2mins (12000ms) of not  moving,chatting,searching broker,using skills,loading new map is used to determine if someone is afk on tera. Thus, if this is too short/long, you can modify this as you wish.
 
+## Quick start example for module creators:
+#### For windows 8.1/10 toast notification:
 ```
-const notifier = require('tera-notifier'),
-       path=require('path')
+const Notifier=require('tera-notifier'), //important
+	path=require('path')		//Only if you intend to have custom icon
+	
+module.exports = function myMod(dispatch) {	
+let notifier = new Notifier(dispatch)	//Important
 
 notifier.notify({
 		'title': 'Tera notify',
 		'message': 'Party message:VHHM>H/D Leader:sasasa(4/5)',
-		'icon': path.join(__dirname,'tera.png'), //Absolute path name. IN this example, tera.png would be placed in base mod folder
-		'wait':false, //False= do not wait for response, time out on its own
-		'sound':'Notification.IM', 
-		'id':1,
-	});
+		'icon': path.join(__dirname,'tera.png'), //optional and use absolute path. If not used, there will be a default tera logo.
+		'wait':false, //False= do not wait for response, time out on its own. True= stay around until 'remove' property is called or user closes it.
+		'sound':'Notification.IM', //Or use true for default sound. Or use false for silence.
+		'id':1, //useful to remove the previous notifcation when you code. Refer to this id when you call 'remove' property
+	})
+}
   ```
   
 Output:
 
 ![Output](http://i.imgur.com/HOHMfgf.jpg)  
-  Full documentations available at original docs/readme.md in this module
+
+
+You can also use `notifier.notifyafk({.........})` instead to notify only if the user is deemed to be afk. Very useful if notification is not too be spammed when the user is actively playing (moving,chatting,searching broker,using skills,loading new map).However, non-standard method of determining afk state is used and is untested, thus, do not rely on this if possible.
+
+Refer to 'Relavant guide part from Original readme' section for all available properties you can use to craft the notification
+
+#### For windows 7 and below
+Because windows 7 does not support toast notification, balloon notification is the fallback. Thus, when using toast notification properties in you code might cause some of them to not appear when balloon notification is used as fallback on users with win7 OS. However, message, title, sound will still be around, which isn't too bad.
   
 ## Relavant guide part from Original readme
 
@@ -100,5 +114,12 @@ See full usage on the [project homepage: notifu](http://www.paralint.com/project
 ## Changes from node-notifier
 - Removed examples and test folders
 - Removed linux and OSx (mac) OS notifications capability (Since tera does not use it?). Commented out in index.js
+- Removed Linux/OSx notification scripts
 - Added dependencies to its own folder and edited the coressponding .requires() 
 - Removed 'which' dependency since it is for Linux notifier only.
+- Reworked index.js, reorganised file structure so that it can work with TERA Proxy without conflicts.
+- Added afk detection functionality. Not tested fully.
+
+## Future works
+- Debugging (probably has alot of bugs)
+- See whether it is possible to detect window state of Tera (Minimise/maximised) and automatically shut off notification based on that. Would also allow notification
