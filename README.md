@@ -1,7 +1,7 @@
 # tera-notifier
 A watered down version of node-notifier that is only for Windows. Work in progress
 
--READ THIS: When you Clone and download this module, RENAME the resulting folder to tera-notifier, DO NOT leave as 'tera-notifier-master'
+>>>READ THIS: When you Clone and download this module, RENAME the resulting folder to tera-notifier, DO NOT leave as 'tera-notifier-master'
 
 Uses these modules and FULL credits goes to them. I DID NOT make this module, merely edited it a little:
 - Node-notifier - https://github.com/mikaelbr/node-notifier 
@@ -84,7 +84,7 @@ notifier.notify({
   console.log(response);
 });
 ```
-### Usage WindowsBalloon
+### Usage WindowsBalloon (Not in my version)
 
 For earlier Windows versions, the taskbar balloons are used (unless
 fallback is activated and Growl is running). For balloons, a great
@@ -123,3 +123,6 @@ See full usage on the [project homepage: notifu](http://www.paralint.com/project
 ## Future works
 - Debugging (probably has alot of bugs)
 - See whether it is possible to detect window state of Tera (Minimise/maximised) and automatically shut off notification based on that. Would also allow notification
+
+## Bugs
+- remove object property does not work well yet. Try not to use this anyway
