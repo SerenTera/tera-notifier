@@ -23,12 +23,12 @@ module.exports = function myMod(dispatch) {
 let notifier = new Notifier(dispatch)	//Important
 
 notifier.notify({
-		'title': 'Tera notify',
-		'message': 'Party message:VHHM>H/D Leader:xaxaxa(3/5)',
-		'icon': path.join(__dirname,'tera.png'), //optional and use absolute path. If not used, there will be a default tera logo.
-		'wait':false, //False= do not wait for response, time out on its own. True= stay around until 'remove' property is called or user closes it.
-		'sound':'Notification.IM', //Or use true for default sound. Or use false for silence.
-		'id':1, //useful to remove the previous notifcation when you code. Refer to this id when you call 'remove' property
+		title: 'Tera notify',
+		message: 'Party message:VHHM>H/D Leader:xaxaxa(3/5)',
+		icon: path.join(__dirname,'tera.png'), //optional and use absolute path. If not used, there will be a default tera logo.
+		wait:false, //False= do not wait for response, time out on its own. True= stay around until 'remove' property is called or user closes it.
+		sound:'Notification.IM', //Or use true for default sound. Or use false for silence.
+		id:1, //useful to remove the previous notifcation when you code. Refer to this id when you call 'remove' property
 	})
 }
   ```
