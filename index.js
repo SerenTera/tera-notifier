@@ -1,5 +1,6 @@
 const Notifier=require('./notifiers/notify')
-	path=require('path')
+	path=require('path'),
+	decodehtml=require('./decodeHTML')
 
 //Defaults:
 const AFK_TIMEOUT=12000 //Time interval to detect when defining the 'afk' status (default 2min)
@@ -11,7 +12,9 @@ let afk=false,			//Set to false always.
 
 	debug=false		//debug
 
-	
+
+
+
 module.exports = function notifier(dispatch) {
 	
 /////Dispatches
@@ -59,15 +62,17 @@ module.exports = function notifier(dispatch) {
 /////Exports
 	this.notifyafk = function(args){
 		if(!args.icon) args.icon=path.join(__dirname,iconfile)
-			
+		
+		args.message = decodehtml.decodeHTMLEntities(args.message)
 		if(afk) Notifier.notify(args)
 	}
 
 	this.notify = function(args){
 		if(!args.icon) args.icon=path.join(__dirname,iconfile)
 			
+		args.message = decodehtml.decodeHTMLEntities(args.message)	
 		Notifier.notify(args)
 	}
 	
-	this.notifyballoon
+	
 }
