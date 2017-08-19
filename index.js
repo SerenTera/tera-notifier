@@ -15,52 +15,40 @@ let afk=false,			//Set to false always.
 module.exports = function notifier(dispatch) {
 	
 /////Dispatches
-	dispatch.hook('C_CHAT', 'raw', fake => { //chat
-		if(!fake) {
-			afk=false
-			time=Date.now()
-			if(debug) console.log(afk)
-		}
+	dispatch.hook('C_CHAT', 'raw', {filter:{fake:false}}, () => { //chat
+		afk=false
+		time=Date.now()
+		if(debug) console.log(afk)
 	})
 	
-	dispatch.hook('C_PLAYER_LOCATION','raw',fake => { //movement
-		if(!fake) {
-			afk=false
-			time=Date.now()
-			if(debug) console.log(afk)
-		}
+	dispatch.hook('C_PLAYER_LOCATION','raw',{filter:{fake:false}}, () => { //movement
+		afk=false
+		time=Date.now()
+		if(debug) console.log(afk)
 	})
 	
-	dispatch.hook('C_TRADE_BROKER_WAITING_ITEM_LIST_NEW','raw',fake => { //searching for broker doing broker stuff
-		if(!fake) {
-			afk=false
-			time=Date.now()
-			if(debug) console.log(afk)
-		}
+	dispatch.hook('C_TRADE_BROKER_WAITING_ITEM_LIST_NEW','raw',{filter:{fake:false}}, () => { //searching for broker doing broker stuff
+		afk=false
+		time=Date.now()
+		if(debug) console.log(afk)
 	})
 	
-	dispatch.hook('C_START_SKILL','raw',fake => { //skill use
-		if(!fake) {
-			afk=false
-			time=Date.now()
-			if(debug) console.log(afk)
-		}
+	dispatch.hook('C_START_SKILL','raw',{filter:{fake:false}}, () => { //skill use
+		afk=false
+		time=Date.now()
+		if(debug) console.log(afk)
 	})
 	
-	dispatch.hook('C_WHISPER','raw',fake => { //whispers
-		if(!fake) {
-			afk=false
-			time=Date.now()
-			if(debug) console.log(afk)
-		}
+	dispatch.hook('C_WHISPER','raw',{filter:{fake:false}}, () => { //whispers
+		afk=false
+		time=Date.now()
+		if(debug) console.log(afk)
 	})
 	
-	dispatch.hook('S_LOAD_TOPO','raw',fake => { //moving to another location
-		if(!fake) {
-			afk=false
-			time=Date.now()
-			if(debug) console.log(afk)
-		}
+	dispatch.hook('S_LOAD_TOPO','raw',{filter:{fake:false}}, () => { //moving to another location
+		afk=false
+		time=Date.now()
+		if(debug) console.log(afk)
 	})
 	
 	dispatch.hook('S_RESPONSE_GAMESTAT_PONG','raw',() => { //Only indicator of afking?
@@ -81,4 +69,5 @@ module.exports = function notifier(dispatch) {
 		Notifier.notify(args)
 	}
 	
+	this.notifyballoon
 }
