@@ -3,7 +3,7 @@ const Notifier=require('./notifiers/notify')
 	decodehtml=require('./decodeHTML')
 
 //Defaults:
-const AFK_TIMEOUT=120000 //Time interval to detect when defining the 'afk' status (default 2min)
+const AFK_TIMEOUT=60000 //Time interval to detect when defining the 'afk' status (default 1min)
 
 let afk=false,			//Set to false always.
 	time=Date.now(), 	//time=last active detected time
