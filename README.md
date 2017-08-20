@@ -13,7 +13,7 @@ Uses these modules and FULL credits goes to them. I DID NOT make this module, me
 ## Users
 In index.js, there is 1 variable that concerns you, that is 'AFK_TIMEOUT' in index.js. By default, 1mins (60000ms) of not  moving,chatting,searching broker,using skills,loading new map is used to determine if someone is afk on tera. Thus, if this is too short/long, you can modify this as you wish.
 
-## Quick start example for module creators:
+## Quick start example for writing:
 #### For windows 8.1/10 toast notification:
 ```
 const Notifier=require('tera-notifier'), //important
