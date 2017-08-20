@@ -37,8 +37,20 @@ Output:
 
 ![Output](http://i.imgur.com/HOHMfgf.jpg)  
 
+#### afk notification
+You can also use `notifier.notifyafk({.........},afk_timeout)` instead to notify only if the user is deemed to be afk. Very useful if notification is not too be spammed when the user is actively playing (moving,chatting,searching broker,using skills,loading new map).However, non-standard method of determining afk state is used and is untested, thus, do not rely on this if possible.
 
-You can also use `notifier.notifyafk({.........})` instead to notify only if the user is deemed to be afk. Very useful if notification is not too be spammed when the user is actively playing (moving,chatting,searching broker,using skills,loading new map).However, non-standard method of determining afk state is used and is untested, thus, do not rely on this if possible.
+'afk_timeout' is the time in milsec to check whether someone is afk. By default, it is 1min (60000ms) if there is NO input (ie. leaving the afk_timeout argument blank). Example, this sets a function to notify only if the user is detected to be afk for more than 30sec:
+```
+notifier.notifyafk({
+		title: 'Tera notify',
+		message: 'Party message:VHHM>H/D Leader:xaxaxa(3/5)',
+		icon: path.join(__dirname,'tera.png'), //optional and use absolute path. If not used, there will be a default tera logo.
+		wait:false, //False= do not wait for response, time out on its own. True= stay around until 'remove' property is called or user closes it.
+		sound:'Notification.IM', //Or use true for default sound. Or use false for silence.
+		id:1, //useful to remove the previous notifcation when you code. Refer to this id when you call 'remove' property
+	},30000)
+```
 
 Refer to 'Relavant guide part from Original readme' section for all available properties you can use to craft the notification
 
@@ -120,9 +132,9 @@ See full usage on the [project homepage: notifu](http://www.paralint.com/project
 - Reworked index.js, reorganised file structure so that it can work with TERA Proxy without conflicts.
 - Added afk detection functionality. Not tested fully.
 
-## Future works
+## ToDo
 - Debugging (probably has alot of bugs)
-- See whether it is possible to detect window state of Tera (Minimise/maximised) and automatically shut off notification based on that. Would also allow notification
+- See whether it is possible to detect window state of Tera (Minimise/maximised) and automatically shut off notification based on that. Would also allow notification only if windows is minimised, instead of using such a complicated method of determining afk status
 
 ## Bugs
 - remove object property does not work well yet. Try not to use this anyway
