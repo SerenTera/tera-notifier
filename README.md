@@ -1,7 +1,7 @@
 # tera-notifier
 A watered down version of node-notifier that is only for Windows. Work in progress
 
->>>READ THIS: When you Clone and download this module, RENAME the resulting folder to tera-notifier, DO NOT leave as 'tera-notifier-master'
+> READ THIS: When you Clone and download this module, RENAME the resulting folder to tera-notifier, DO NOT leave as 'tera-notifier-master' OR you can use the release version: https://github.com/SerenTera/tera-notifier/releases
 
 Uses these modules and FULL credits goes to them. I DID NOT make this module, merely edited it a little:
 - Node-notifier - https://github.com/mikaelbr/node-notifier 
