@@ -2,6 +2,19 @@ const Notifier=require('./notifiers/notify')
 	path=require('path'),
 	decodehtml=require('./decodeHTML')
 
+//List of raw packets to check for afk status
+const packetcheck=[
+'C_CHAT',
+'C_PLAYER_LOCATION',
+'C_TRADE_BROKER_WAITING_ITEM_LIST_NEW',
+'C_START_SKILL',
+'C_WHISPER',
+'S_LOAD_TOPO',
+'C_NPC_CONTACT',
+'S_TRADE_BROKER_HISTORY_ITEM_LIST',
+'C_TRADE_BROKER_REGISTERED_ITEM_LIST'
+]
+
 //Defaults:
 const AFK_TIMEOUT=60000 //default timeout if afktimeout is not defined.
 
@@ -17,37 +30,15 @@ let afktime=0,			//Set to false always.
 
 module.exports = function notifier(dispatch) {
 	
+	
 /////Dispatches
-	dispatch.hook('C_CHAT', 'raw', {filter:{fake:false}}, () => { //chat
-		time=Date.now()
-		if(debug) console.log(afktime)
-	})
-	
-	dispatch.hook('C_PLAYER_LOCATION','raw',{filter:{fake:false}}, () => { //movement
-		time=Date.now()
-		if(debug) console.log(afktime)
-	})
-	
-	dispatch.hook('C_TRADE_BROKER_WAITING_ITEM_LIST_NEW','raw',{filter:{fake:false}}, () => { //searching for broker doing broker stuff
-		time=Date.now()
-		if(debug) console.log(afktime)
-	})
-	
-	dispatch.hook('C_START_SKILL','raw',{filter:{fake:false}}, () => { //skill use
-		time=Date.now()
-		if(debug) console.log(afktime)
-	})
-	
-	dispatch.hook('C_WHISPER','raw',{filter:{fake:false}}, () => { //whispers
-		time=Date.now()
-		if(debug) console.log(afktime)
-	})
-	
-	dispatch.hook('S_LOAD_TOPO','raw',{filter:{fake:false}}, () => { //moving to another location
-		time=Date.now()
-		if(debug) console.log(afktime)
-	})
-	
+	for(let hook of packetcheck) {
+		dispatch.hook(hook,'raw',{filter:{fake:false}}, () => { 
+			time=Date.now()
+			if(debug) console.log(afktime)
+		})
+	}
+
 	dispatch.hook('S_RESPONSE_GAMESTAT_PONG','raw',() => { //Only indicator of afking?
 		afktime = Date.now()-time
 		if(debug) console.log(afktime)
