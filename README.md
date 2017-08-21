@@ -135,6 +135,6 @@ See full usage on the [project homepage: notifu](http://www.paralint.com/project
 ## ToDo
 - Debugging (probably has alot of bugs)
 - See whether it is possible to detect window state of Tera (Minimise/maximised) and automatically shut off notification based on that. Would also allow notification only if windows is minimised, instead of using such a complicated method of determining afk status
-
+- clean up the codes
 ## Bugs
 - remove object property does not work well yet. Try not to use this anyway
