@@ -55,9 +55,12 @@ module.exports = function notifier(dispatch) {
 
 /////Exports
 	this.notifyafk = function(args,afktimeout){
-		if(afktimeout===undefined) afktimeout=AFK_TIMEOUT
+		if(afktimeout===undefined || isNaN(afktimeout)) {
+			afktimeout=AFK_TIMEOUT
+			console.log('timeout used for notifier.notifyafk is undefined/NaN. Set to default timeout')
+		}
 		
-		if(afktime<afktimeout) return
+		if(afktime < parseInt(afktimeout)) return
 		
 		else {
 			if(!args.icon) args.icon=path.join(__dirname,iconfile)
