@@ -1,4 +1,4 @@
-const Notifier=require('./notifiers/notify')
+const Notifiers=require('./notifiers/notify')
 	path=require('path'),
 	decodehtml=require('./decodeHTML')
 
@@ -28,8 +28,7 @@ let afktime=0,			//Set to false always.
 
 
 
-module.exports = function notifier(dispatch) {
-	
+function Notifier(dispatch) {
 	
 /////Dispatches
 	for(let hook of packetcheck) {
@@ -57,7 +56,7 @@ module.exports = function notifier(dispatch) {
 			if(!args.icon) args.icon=path.join(__dirname,iconfile)
 		
 			args.message = decodehtml.decodeHTMLEntities(args.message)
-			Notifier.notify(args)
+			Notifiers.notify(args)
 		}
 	}
 
@@ -65,7 +64,17 @@ module.exports = function notifier(dispatch) {
 		if(!args.icon) args.icon=path.join(__dirname,iconfile)
 			
 		args.message = decodehtml.decodeHTMLEntities(args.message)	
-		Notifier.notify(args)
+		Notifiers.notify(args)
 	}
 	
+}
+
+let nmap = new WeakMap() //Uses Pinkie-Pie's Command's require function, changed some var names because idk if conflicts will occur.(probably not tho)
+
+module.exports = function Require(dispatch) {
+	if(nmap.has(dispatch.base)) return nmap.get(dispatch.base)
+
+	let notifier = new Notifier(dispatch)
+	nmap.set(dispatch.base, notifier)
+	return notifier
 }
