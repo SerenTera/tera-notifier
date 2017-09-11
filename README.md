@@ -4,6 +4,7 @@ A watered down version of node-notifier that is only for Windows. Work in progre
 > READ THIS: When you Clone and download this module, RENAME the resulting folder to tera-notifier, DO NOT leave as 'tera-notifier-master' OR you can use the release version: https://github.com/SerenTera/tera-notifier/releases
 
 Uses these modules and FULL credits goes to them. I DID NOT make this module, merely edited it a little:
+- Commands Module by Pinkie-Pie for the code fragment. https://github.com/pinkipi/command
 - Node-notifier - https://github.com/mikaelbr/node-notifier 
 - node-notifier Dependencies(pre-included in this version already)
 - snoretoast
@@ -20,15 +21,16 @@ const Notifier=require('tera-notifier'), //important
 	path=require('path')		//Only if you intend to have custom icon
 	
 module.exports = function myMod(dispatch) {	
-let notifier = new Notifier(dispatch)	//Important
+let notifier = Notifier(dispatch)	//Important
+
 
 notifier.notify({
 		title: 'Tera notify',
 		message: 'Party message:VHHM>H/D Leader:xaxaxa(3/5)',
-		icon: path.join(__dirname,'tera.png'), //optional and use absolute path. If not used, there will be a default tera logo.
+		icon: path.join(__dirname,'tera.png'), //Optional. Use absolute path. If not used, there will be a default tera logo.
 		wait:false, //False= do not wait for response, time out on its own. True= stay around until 'remove' property is called or user closes it.
 		sound:'Notification.IM', //Or use true for default sound. Or use false for silence.
-		id:1, //useful to remove the previous notifcation when you code. Refer to this id when you call 'remove' property
+		id:1, //Useful to remove the previous notifcation when you code. Refer to this id when you call 'remove' property
 	})
 }
   ```
@@ -138,3 +140,4 @@ See full usage on the [project homepage: notifu](http://www.paralint.com/project
 - clean up the codes
 ## Bugs
 - remove object property does not work well yet. Try not to use this anyway
+
