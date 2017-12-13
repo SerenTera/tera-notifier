@@ -1,14 +1,18 @@
 # tera-notifier
 A watered down version of node-notifier that is only for Windows. Work in progress
 
+## Update
+For Windows 10 Fall Creators Update (Build 1709 and above), due to the fix in windows 10 notifications loophole, notification via snoreToast cannot work anymore without extensive rework. However, I have enabled balloon notification instead using notifu for users detected to be using build 1709 and above, which windows 10 fortunately converts into Toast type notification. So, if you updated windows 10 recently and notifications failed, update this module.
+
+## General Infomation
 > READ THIS: When you Clone and download this module, RENAME the resulting folder to tera-notifier, DO NOT leave as 'tera-notifier-master' OR you can use the release version: https://github.com/SerenTera/tera-notifier/releases
 
 Uses these modules and FULL credits goes to them. I DID NOT make this module, merely edited it a little:
 - Commands Module by Pinkie-Pie for the code fragment. https://github.com/pinkipi/command
 - Node-notifier - https://github.com/mikaelbr/node-notifier 
 - node-notifier Dependencies(pre-included in this version already)
-- snoretoast
-- notifu
+- snoretoast - https://github.com/KDE/snoretoast
+- notifu - https://www.paralint.com/projects/notifu/
 - Full list of original documentations can be derived from original docs file
 
 ## Users
