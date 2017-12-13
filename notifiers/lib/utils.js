@@ -485,6 +485,11 @@ module.exports.isLessThanWin8 = function() {
     semver.satisfies(garanteeSemverFormat(os.release()), '<6.2.9200');
 };
 
+module.exports.isWin10Build1709 = function() {
+	return os.type() === 'Windows_NT' &&
+	  semver.satisfies(garanteeSemverFormat(os.release()), '>=10.0.16299');
+}
+
 function garanteeSemverFormat(version) {
   if (version.split('.').length === 2) {
     version += '.0';
