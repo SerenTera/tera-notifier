@@ -8,7 +8,7 @@ var WindowsToaster = require('./notifiers/toaster');
 var Growl = require('./notifiers/growl');
 var WindowsBalloon = require('./notifiers/balloon');
 
-var options = { withFallback: true };
+var options = { withFallback: false };
 
 switch (os.type()) {
   /*case 'Linux': //No point using linux and OSx platform notifications
@@ -20,7 +20,8 @@ switch (os.type()) {
     module.exports.Notification = NotificationCenter;
     break;*/
   case 'Windows_NT':
-    if (utils.isLessThanWin8()) {
+    if (utils.isLessThanWin8() || utils.isWin10Build1709) { //If user is windows 10 Build 1709 (Fall Creators), use windows balloon instead.
+	  if(utils.isWin10Build1709) console.log('[Tera Notifier]Detected Win10 Build 1709. Switching to Balloon Notifications.')
       module.exports = new WindowsBalloon(options);
       module.exports.Notification = WindowsBalloon;
     } else {
