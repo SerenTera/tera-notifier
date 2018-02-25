@@ -28,6 +28,7 @@ var notifySendFlags = {
   u: 'urgency',
   urgency: 'urgency',
   t: 'expire-time',
+  time: 'expire-time',
   e: 'expire-time',
   expire: 'expire-time',
   'expire-time': 'expire-time',
@@ -48,13 +49,14 @@ module.exports.command = function(notifier, options, cb) {
     console.info('[notifier options]', options.join(' '));
   }
 
-  return cp.exec(
-    notifier + ' ' + options.join(' '),
-    function(error, stdout, stderr) {
-      if (error) return cb(error);
-      cb(stderr, stdout);
-    }
-  );
+  return cp.exec(notifier + ' ' + options.join(' '), function(
+    error,
+    stdout,
+    stderr
+  ) {
+    if (error) return cb(error);
+    cb(stderr, stdout);
+  });
 };
 
 module.exports.fileCommand = function(notifier, options, cb) {
@@ -95,7 +97,7 @@ module.exports.immediateFileCommand = function(notifier, options, cb) {
     console.info('[notifier path]', notifier);
   }
 
-  notifierExists(notifier, function(exists) {
+  notifierExists(notifier, function(_, exists) {
     if (!exists) {
       return cb(new Error('Notifier (' + notifier + ') not found on system.'));
     }
@@ -106,18 +108,18 @@ module.exports.immediateFileCommand = function(notifier, options, cb) {
 
 function notifierExists(notifier, cb) {
   return fs.stat(notifier, function(err, stat) {
-    if (!err) return cb(stat.isFile());
+    if (!err) return cb(err, stat.isFile());
 
     // Check if Windows alias
     if (path.extname(notifier)) {
       // Has extentioon, no need to check more
-      return cb(false);
+      return cb(err, false);
     }
 
     // Check if there is an exe file in the directory
     return fs.stat(notifier + '.exe', function(err, stat) {
-      if (err) return cb(false);
-      cb(stat.isFile());
+      if (err) return cb(err, false);
+      cb(err, stat.isFile());
     });
   });
 }
@@ -359,8 +361,6 @@ module.exports.mapToWin8 = function(options) {
   if (options.appName) {
     options.appID = options.appName;
     delete options.appName;
-  } else if (typeof options.appID === 'undefined') {
-    options.appID = ' ';
   }
 
   if (typeof options.remove !== 'undefined') {
@@ -404,7 +404,8 @@ module.exports.mapToWin8 = function(options) {
   for (var key in options) {
     // Check if is allowed. If not, delete!
     if (
-      options.hasOwnProperty(key) && allowedToasterFlags.indexOf(key) === -1
+      options.hasOwnProperty(key) &&
+      allowedToasterFlags.indexOf(key) === -1
     ) {
       delete options[key];
     }
@@ -471,24 +472,25 @@ module.exports.isMac = function() {
 };
 
 module.exports.isMountainLion = function() {
-  return os.type() === 'Darwin' &&
-    semver.satisfies(garanteeSemverFormat(os.release()), '>=12.0.0');
+  return (
+    os.type() === 'Darwin' &&
+    semver.satisfies(garanteeSemverFormat(os.release()), '>=12.0.0')
+  );
 };
 
 module.exports.isWin8 = function() {
-  return os.type() === 'Windows_NT' &&
-    semver.satisfies(garanteeSemverFormat(os.release()), '>=6.2.9200');
+  return (
+    os.type() === 'Windows_NT' &&
+    semver.satisfies(garanteeSemverFormat(os.release()), '>=6.2.9200')
+  );
 };
 
 module.exports.isLessThanWin8 = function() {
-  return os.type() === 'Windows_NT' &&
-    semver.satisfies(garanteeSemverFormat(os.release()), '<6.2.9200');
+  return (
+    os.type() === 'Windows_NT' &&
+    semver.satisfies(garanteeSemverFormat(os.release()), '<6.2.9200')
+  );
 };
-
-module.exports.isWin10Build1709 = function() {
-	return os.type() === 'Windows_NT' &&
-	  semver.satisfies(garanteeSemverFormat(os.release()), '>=10.0.16299');
-}
 
 function garanteeSemverFormat(version) {
   if (version.split('.').length === 2) {
