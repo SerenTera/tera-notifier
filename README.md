@@ -2,7 +2,11 @@
 A watered down version of node-notifier that is only for Windows. Work in progress
 
 ## Update
-For Windows 10 Fall Creators Update (Build 1709 and above), due to the fix in windows 10 notifications loophole, notification via snoreToast cannot work anymore without extensive rework. However, I have enabled balloon notification instead using notifu for users detected to be using build 1709 and above, which windows 10 fortunately converts into Toast type notification. So, if you updated windows 10 recently and notifications failed, update this module.
+For Windows 10 Fall Creators Update (Build 1709 and above):
+
+The new update to node-notifier fixed toast notification issue, but snoretoast have to be run initially when installing this module as a new module or if it has not been run before. You can run snoreToast at `tera-notifier\notifiers\vendor\snoreToast\snoreToast.exe`. Hopefully, there won't be much issues after running it for the first time, and that there is no need to do it multiple times. For those suspicious of running files VirusTotal results are here: https://www.virustotal.com/#/file/9e8016d8552c50db2ed2b5a08a1523a258214d550aa5dd52ce566fd409c72a7e/detection
+
+I have attached a test file, `notifiertest.js` in the folder `tera-notifier\notifiers\test_module`, if you need to test, just drop this file in `bin\node_modules` folder, no need to create a subfolder for it. It will pop up a notification on desktop after logging into the server immediately, while loading the character selection screen.
 
 ## General Infomation
 > READ THIS: When you Clone and download this module, RENAME the resulting folder to tera-notifier, DO NOT leave as 'tera-notifier-master' OR you can use the release version: https://github.com/SerenTera/tera-notifier/releases
