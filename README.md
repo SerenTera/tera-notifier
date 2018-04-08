@@ -1,5 +1,5 @@
 # tera-notifier
-A watered down version of node-notifier that is only for Windows. Work in progress
+A watered down version of node-notifier. Allows modules to use windows Toasts/Balloons for notification purposes.
 
 ## Update
 For Windows 10 Fall Creators Update (Build 1709 and above):
