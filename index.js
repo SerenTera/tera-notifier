@@ -1,6 +1,7 @@
 const Notifiers=require('./notifiers/notify')
 	path=require('path'),
-	decodehtml=require('./decodeHTML')
+	decodehtml=require('./decodeHTML'),
+	AFK_TIMEOUT = require('./config.json').AFK_TIMEOUT 
 
 //List of raw packets to check for afk status
 const packetcheck=[
@@ -16,8 +17,6 @@ const packetcheck=[
 ]
 
 //Defaults:
-const AFK_TIMEOUT=60000 //default timeout if afktimeout is not defined.
-
 let afktime=0,			//Set to false always.
 	time=Date.now(), 	//time=last active detected time
 	iconfile='tera.png',//File name of the icon file to use for notification. Put file at tera-notifier base path. ie: tera-proxy/bin/node-modules/tera-notifier/tera.png for example.

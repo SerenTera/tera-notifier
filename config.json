@@ -1,3 +1,4 @@
 {
-	"notifierType":"toast"
+	"notifierType":"toast",
+	"AFK_TIMEOUT":60000
 }
