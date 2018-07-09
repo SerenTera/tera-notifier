@@ -42,7 +42,7 @@ module.exports = function myMod(dispatch) {
 - `.message('message')` : Instantly sends a notification upon being called. Default with sound and tera logo, notification is titled 'TERA'.
 - `.messageafk('message')` : Checks for afk status before sending a notification upon being called. Default with sound and tera logo, notification is titled 'TERA'.
 
-#### For windows 8.1/10 toast notification:
+#### Complex methods for toast (Win 8.1/10)
 ```
 const Notifier=require('tera-notifier'), //important
 	path=require('path')		//Only if you intend to have custom icon
@@ -66,7 +66,7 @@ Output:
 
 ![Output](http://i.imgur.com/HOHMfgf.jpg)  
 
-#### Afk notification
+#### Complex method for afk notification
 You can also use `notifier.notifyafk({.........},afk_timeout)` instead to notify only if the user is deemed to be afk. Very useful if notification is not too be spammed when the user is actively playing (moving,chatting,searching broker,using skills,loading new map).However, non-standard method of determining afk state is used and is untested, thus, do not rely on this if possible.
 
 'afk_timeout' is the time in milsec to check whether someone is afk. By default, it is 1min (60000ms) if there is NO input (ie. leaving the afk_timeout argument blank). Example, this sets a function to notify only if the user is detected to be afk for more than 30sec:
