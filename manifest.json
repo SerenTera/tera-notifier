@@ -1,10 +1,12 @@
 {
     "files": {
-        "config.json": "c95fc6ce24055693f7235e2544196003f28deffaf9eeda101d99f612f85ceaf4",
+        "config.json": {
+            "hash":"c95fc6ce24055693f7235e2544196003f28deffaf9eeda101d99f612f85ceaf4",
+            "overwrite":false
+        },
         "decodeHTML.js": "84f0249db0d740d566165f9ef182956ded55d900efb15423c3610f598a8e3ae5",
         "index.js": "1a52986e2cb0a89f04cbbc8f782e759994826a551ccc5dc2ae7d5fae3d8c78e7",
         "module.json": "a3d27c6baa8884334a7228f59b4b910fdf97b2587fc2173d75cbfd224b5e9f02",
-        "SHAGen.exe": "9dcb45efc85a76d8a2dfcc208313c255c93e32deb524f07af4a5dedbc783976c",
         "tera.png": "ee141b6378e25440503ce1d5fac5da30925c28b898baeaa5650415a609b0f387",
         "notifiers/notify.js": "cc834969a3883fffb1dc4e5f1c95168adfb70e32cad0274be337243ea1139ba9",
         "notifiers/dependencies/growly/lib/gntp.js": "190b69962a89cc91f26abe85d7099bfaa569b59fc945ba0be86a0c331cff7607",
