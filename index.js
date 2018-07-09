@@ -28,23 +28,25 @@ let afktime=0,			//Set to false always.
 
 
 
-function Notifier(dispatch) {
-	
+class Notifier {
+	constructor(dispatch) {
+		this.dispatch = dispatch
+		
 /////Dispatches
-	for(let hook of packetcheck) {
-		dispatch.hook(hook,'raw',{filter:{fake:false}}, () => { 
-			time=Date.now()
+		for(let hook of packetcheck) {
+			dispatch.hook(hook,'raw',{filter:{fake:false}}, () => { 
+				time=Date.now()
+				if(debug) console.log(afktime)
+			})
+		}
+
+		dispatch.hook('S_RESPONSE_GAMESTAT_PONG','raw',() => { //Only indicator of afking?
+			afktime = Date.now()-time
 			if(debug) console.log(afktime)
 		})
 	}
-
-	dispatch.hook('S_RESPONSE_GAMESTAT_PONG','raw',() => { //Only indicator of afking?
-		afktime = Date.now()-time
-		if(debug) console.log(afktime)
-	})
-
 /////Exports
-	this.notifyafk = function(args,afktimeout){
+	notifyafk(args,afktimeout) {
 		if(afktimeout===undefined || isNaN(afktimeout)) {
 			afktimeout=AFK_TIMEOUT
 			console.log('timeout used for notifier.notifyafk is undefined/NaN. Set to default timeout')
@@ -60,13 +62,41 @@ function Notifier(dispatch) {
 		}
 	}
 
-	this.notify = function(args){
+	notify(args) {
 		if(!args.icon) args.icon=path.join(__dirname,iconfile)
 			
 		args.message = decodehtml.decodeHTMLEntities(args.message)	
 		Notifiers.notify(args)
 	}
 	
+	message(msg) {
+		Notifiers.notify({
+			title: 'TERA',
+			message: msg,
+			wait:false, 
+			icon:path.join(__dirname,iconfile),
+			sound:'Notification.IM', 
+		})
+	}
+	
+	messageafk(msg) {
+		if(afktimeout===undefined || isNaN(afktimeout)) {
+			afktimeout=AFK_TIMEOUT
+			console.log('timeout used for notifier.notifyafk is undefined/NaN. Set to default timeout')
+		}
+		
+		if(afktime < parseInt(afktimeout)) return
+		
+		else {
+			Notifiers.notify({
+				title: 'TERA',
+				message: msg,
+				wait:false, 
+				icon:path.join(__dirname,iconfile),
+				sound:'Notification.IM', 
+			})
+		}
+	}
 }
 
 let nmap = new WeakMap() //Uses Pinkie-Pie's Command's require function, changed some var names because idk if conflicts will occur.(probably not tho)
