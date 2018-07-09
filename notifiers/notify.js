@@ -1,14 +1,20 @@
-var os = require('os');
-var utils = require('./lib/utils');
+const os = require('os');
+const utils = require('./lib/utils');
+const config = require('../config.json') //Seren
+const notifierType = config.notifierType.toLowerCase() //Seren
+
+if(notifierType !== 'toast' && notifierType !== 'balloon') console.log('[Tera Notifier] Error in config. Use toast or balloon only'); //Seren
 
 // All notifiers
 //var NotifySend = require('./notifiers/notifysend');
 //var NotificationCenter = require('./notifiers/notificationcenter');
-var WindowsToaster = require('./notifiers/toaster');
-var Growl = require('./notifiers/growl');
-var WindowsBalloon = require('./notifiers/balloon');
+const WindowsToaster = require('./notifiers/toaster');
+const Growl = require('./notifiers/growl');
+const WindowsBalloon = require('./notifiers/balloon');
 
-var options = { withFallback: true };
+let options = { withFallback: true };
+
+
 
 switch (os.type()) {
   /*case 'Linux':
@@ -20,7 +26,8 @@ switch (os.type()) {
     module.exports.Notification = NotificationCenter;
     break;*/
   case 'Windows_NT':
-    if (utils.isLessThanWin8()) {
+    if (utils.isLessThanWin8() || notifierType == 'balloon') { //Seren
+	  if(notifierType == 'balloon') options.withFallback = false;
       module.exports = new WindowsBalloon(options);
       module.exports.Notification = WindowsBalloon;
     } else {
