@@ -1,11 +1,11 @@
 {
     "files": {
         "config.json": {
-            "hash":"be9b6a2fd0f72fe60c38103cd6a22c7a5a4cc617eaec48c63729ce563db3c424",
-            "overwrite":false
-        },
+		    "hash":"be9b6a2fd0f72fe60c38103cd6a22c7a5a4cc617eaec48c63729ce563db3c424",
+		    "overwrite":false
+		},
         "decodeHTML.js": "84f0249db0d740d566165f9ef182956ded55d900efb15423c3610f598a8e3ae5",
-        "index.js": "0c137955249b8724dfe0d72efed31be25f8584a15ac37da21803e94e911feb13",
+        "index.js": "14ea64fbe11f7c977c783c305c7d86f6669d8783edc46aff9d5579e85d894ece",
         "module.json": "a3d27c6baa8884334a7228f59b4b910fdf97b2587fc2173d75cbfd224b5e9f02",
         "tera.png": "ee141b6378e25440503ce1d5fac5da30925c28b898baeaa5650415a609b0f387",
         "notifiers/notify.js": "cc834969a3883fffb1dc4e5f1c95168adfb70e32cad0274be337243ea1139ba9",

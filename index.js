@@ -69,6 +69,8 @@ class Notifier {
 	}
 	
 	message(msg) {
+		msg = decodehtml.decodeHTMLEntities(msg);
+		
 		Notifiers.notify({
 			title: 'TERA',
 			message: msg,
@@ -87,6 +89,7 @@ class Notifier {
 		if(afktime < parseInt(afktimeout)) return
 		
 		else {
+			msg = decodehtml.decodeHTMLEntities(msg);
 			Notifiers.notify({
 				title: 'TERA',
 				message: msg,
