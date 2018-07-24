@@ -42,7 +42,7 @@ module.exports = function myMod(dispatch) {
 }
 ```
 - `.message('message')` : Instantly sends a notification upon being called. Default with sound and tera logo, notification is titled 'TERA'.
-- `.messageafk('message'[,afk timeout])` : Checks for afk status before sending a notification upon being called. Default with sound and tera logo, notification is titled 'TERA'.
+- `.messageafk('message'[,afk timeout])` : Checks for afk status before sending a notification upon being called. Default with sound and tera logo, notification is titled 'TERA'. Afk timeout is not mandatory, but you can use it to customize how long to check for afk status.
 
 #### Complex methods for toast (Win 8.1/10)
 ```
