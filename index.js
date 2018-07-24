@@ -80,7 +80,7 @@ class Notifier {
 		})
 	}
 	
-	messageafk(msg) {
+	messageafk(msg,afktimeout) {
 		if(afktimeout===undefined || isNaN(afktimeout)) {
 			afktimeout=AFK_TIMEOUT
 			console.log('timeout used for notifier.notifyafk is undefined/NaN. Set to default timeout')
