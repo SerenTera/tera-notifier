@@ -36,11 +36,13 @@ module.exports = function myMod(dispatch) {
     
     notifier.message('Hello world! uwu owo')  //standard instant notification
     
-    notifier.messageafk('Hello world! uwu owo') //checks for afk status before notifying
+    notifier.messageafk('Hello world! uwu owo') //checks for afk status using defaults before notifying
+    
+    notifier.messageafk('Hello world! uwu owo', 30000) //checks if last 30 sec user is afk before notifying
 }
 ```
 - `.message('message')` : Instantly sends a notification upon being called. Default with sound and tera logo, notification is titled 'TERA'.
-- `.messageafk('message')` : Checks for afk status before sending a notification upon being called. Default with sound and tera logo, notification is titled 'TERA'.
+- `.messageafk('message'[,afk timeout])` : Checks for afk status before sending a notification upon being called. Default with sound and tera logo, notification is titled 'TERA'.
 
 #### Complex methods for toast (Win 8.1/10)
 ```
