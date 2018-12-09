@@ -29,10 +29,10 @@ Edit config.json for user configs. Do not touch anything else.
 #### Easy way to use
 Similar to command module, simply use `.message()` or `.messageafk()` methods as examplified below:
 ```
-const Notifier=require('tera-notifier')
+
 	
-module.exports = function myMod(dispatch) {	
-    const notifier = Notifier(dispatch)	
+module.exports = function myMod(mod) {	
+    const notifier = mod.require.tera-notifier
     
     notifier.message('Hello world! uwu owo')  //standard instant notification
     
@@ -46,11 +46,10 @@ module.exports = function myMod(dispatch) {
 
 #### Complex methods for toast (Win 8.1/10)
 ```
-const Notifier=require('tera-notifier'), //important
-	path=require('path')		//Only if you intend to have custom icon
+const path=require('path')		//Only if you intend to have custom icon
 	
-module.exports = function myMod(dispatch) {	
-    const notifier = Notifier(dispatch)	//Important
+module.exports = function myMod(mod) {	
+    const notifier = mod.require.tera-notifier	//Important
 
 
     notifier.notify({
