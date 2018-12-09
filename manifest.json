@@ -5,7 +5,6 @@
         "module.json": "5db3600c7563dd7c37e288fb2b271622d79ff9b7ee57032aab7d3127680e813c",
         "settings-migrator.js": "ed91ed328463245d58273c1d8fd1aab6226ea5f8b6fe4ca6616126049a8d0066",
         "tera.png": "ee141b6378e25440503ce1d5fac5da30925c28b898baeaa5650415a609b0f387",
-        "_manifest.json": "1dae8473b81abf8464e654e0d86f5bd85edfe2821ad3928e9ac5be9be6e89326",
         "notifiers/notify.js": "cc834969a3883fffb1dc4e5f1c95168adfb70e32cad0274be337243ea1139ba9",
         "notifiers/dependencies/growly/lib/gntp.js": "190b69962a89cc91f26abe85d7099bfaa569b59fc945ba0be86a0c331cff7607",
         "notifiers/dependencies/growly/lib/growly.js": "86065ee95703286ff0923be3b72d8dc51d1bfac7813d250147fc47dcee6ab9df",
