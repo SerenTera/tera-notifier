@@ -1,9 +1,10 @@
 {
     "files": {
+        "config.json": "be9b6a2fd0f72fe60c38103cd6a22c7a5a4cc617eaec48c63729ce563db3c424",
         "decodeHTML.js": "84f0249db0d740d566165f9ef182956ded55d900efb15423c3610f598a8e3ae5",
         "index.js": "4df1121ba282a176fbb1599a2e2c14f684174e0faa78003a96ec2bbbd90d5c8f",
         "module.json": "5db3600c7563dd7c37e288fb2b271622d79ff9b7ee57032aab7d3127680e813c",
-        "settings-migrator.js": "ed91ed328463245d58273c1d8fd1aab6226ea5f8b6fe4ca6616126049a8d0066",
+        "settings_migrator.js": "ed91ed328463245d58273c1d8fd1aab6226ea5f8b6fe4ca6616126049a8d0066",
         "tera.png": "ee141b6378e25440503ce1d5fac5da30925c28b898baeaa5650415a609b0f387",
         "notifiers/notify.js": "cc834969a3883fffb1dc4e5f1c95168adfb70e32cad0274be337243ea1139ba9",
         "notifiers/dependencies/growly/lib/gntp.js": "190b69962a89cc91f26abe85d7099bfaa569b59fc945ba0be86a0c331cff7607",
@@ -20,7 +21,7 @@
         "notifiers/notifiers/balloon.js": "0d2f65f5bee22e3ef06e3bdfad02dc476e18fc65a7c2572c29f943a1001c5d0c",
         "notifiers/notifiers/growl.js": "ff05681d3a6dc8812bbd994ce0a16c2d5ff973531b755441fea790a32e1ce89c",
         "notifiers/notifiers/toaster.js": "7447c6e0219bb4e3d69900b875b924904793900812d6d70d02abb88dead040c7",
-        "notifiers/test_module/notifiertest.js": "8021ba5eaf04e4342f49a3fdadba218849c89c35807a6efae7633e80753661fc",
+        "notifiers/test_module/notifiertest.js": "a81ed3ebf2ebb0f391ebd6701eb68cab5d6cc2faa797b8571fb07c0af24d19d6",
         "notifiers/vendor/notifu/notifu.exe": "511adc6c5f1fdf45cc0e266b7ab052c64f4620fed3c982e23d8e3c2f49c8a818",
         "notifiers/vendor/notifu/notifu64.exe": "54fe692f76d348a77be1fa214c98338f4780c48d5a1f73e34640261184b950e0",
         "notifiers/vendor/snoreToast/SnoreToast.exe": "9e8016d8552c50db2ed2b5a08a1523a258214d550aa5dd52ce566fd409c72a7e",
