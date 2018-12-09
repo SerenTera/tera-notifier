@@ -1,6 +1,5 @@
 {
     "files": {
-        "config.json": "be9b6a2fd0f72fe60c38103cd6a22c7a5a4cc617eaec48c63729ce563db3c424",
         "decodeHTML.js": "84f0249db0d740d566165f9ef182956ded55d900efb15423c3610f598a8e3ae5",
         "index.js": "4df1121ba282a176fbb1599a2e2c14f684174e0faa78003a96ec2bbbd90d5c8f",
         "module.json": "5db3600c7563dd7c37e288fb2b271622d79ff9b7ee57032aab7d3127680e813c",
