@@ -1,3 +1,14 @@
 {
+	"disableAutoUpdate": false,
+	"name": "tera-notifier",
+	"author": "Seren",
+	"description": "Allows proxy modules to use windows notification feature for alerts and messaging purposes.",
+	"version": "1.0.0",
+	"options": {
+        "niceName": "Tera Notifier",
+        "settingsVersion": 1,
+        "settingsFile": "config.json",
+        "settingsMigrator": "settings_migrator.js"
+    },
     "servers": ["https://raw.githubusercontent.com/SerenTera/tera-notifier/master/"]
 }
