@@ -1,7 +1,8 @@
+require('./settings_migrator')
+
 const Notifiers=require('./notifiers/notify'),
 	path=require('path'),
-	decodehtml=require('./decodeHTML'),
-	AFK_TIMEOUT = require('./config.json').AFK_TIMEOUT || require('./config.json').data.AFK_TIMEOUT
+	decodehtml=require('./decodeHTML')
 
 //List of raw packets to check for afk status
 const packetcheck=[
@@ -30,7 +31,7 @@ let afktime=0,			//Set to false always.
 class Notifier {
 	constructor(dispatch) {
 		this.dispatch = dispatch
-		
+		AFK_TIMEOUT = dispatch.settings.AFK_TIMEOUT || 
 /////Dispatches
 		for(let hook of packetcheck) {
 			dispatch.hook(hook,'raw',{filter:{fake:false}}, () => { 
