@@ -1,6 +1,14 @@
-const Notifiers=require('./notifiers/notify'),
-	path=require('path'),
-	decodehtml=require('./decodeHTML')
+const Notifiers = require('./notifiers/notify'),
+	fs = require('fs'),
+	path = require('path'),
+	decodehtml = require('./decodeHTML')
+	
+try {
+	const AFK_TIMEOUT = JSON.parse(fs.readFileSync(path.join(__dirname,'config.json'))).data.AFK_TIMEOUT
+}
+catch(e) {
+	const AFK_TIMEOUT = 60000
+}
 
 //List of raw packets to check for afk status
 const packetcheck=[
@@ -29,7 +37,6 @@ let afktime=0,			//Set to false always.
 class Notifier {
 	constructor(dispatch) {
 		this.dispatch = dispatch
-		const AFK_TIMEOUT = dispatch.settings.AFK_TIMEOUT
 /////Dispatches
 		for(let hook of packetcheck) {
 			dispatch.hook(hook,'raw',{filter:{fake:false}}, () => { 
@@ -103,9 +110,10 @@ class Notifier {
 let map = new WeakMap() 
 
 module.exports = function Require(dispatch) {
-	if(map.has(dispatch.dispatch)) return map.get(dispatch.dispatch) //Update .base to .dispatch
+	let mapbase = dispatch.base || dispatch.dispatch
+	if(map.has(mapbase)) return map.get(mapbase) //Update .base to .dispatch
 
 	let notifier = new Notifier(dispatch)
-	map.set(dispatch.dispatch, notifier)
+	map.set(mapbase, notifier)
 	return notifier
 }
