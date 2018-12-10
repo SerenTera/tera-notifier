@@ -1,6 +1,9 @@
 # tera-notifier
 A watered down version of node-notifier. Allows modules to use windows Toasts/Balloons for notification purposes.
 
+## Infomation
+Internal Proxy Name: 'notifier'
+
 ## Update
 For Windows 10 Fall Creators Update (Build 1709 and above):
 
