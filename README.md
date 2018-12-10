@@ -32,7 +32,8 @@ Similar to command module, simply use `.message()` or `.messageafk()` methods as
 
 	
 module.exports = function myMod(mod) {	
-    const notifier = mod.require.tera-notifier
+    const notifier = mod.require.notifier //If using Caali's Proxy
+    const notifier = require('../tera-notifier') //If using Pinkie's OR legacy-type proxy for some reason
     
     notifier.message('Hello world! uwu owo')  //standard instant notification
     
