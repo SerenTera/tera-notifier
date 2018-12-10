@@ -1,7 +1,7 @@
 const os = require('os');
 const utils = require('./lib/utils');
 const config = require('../config.json') //Seren
-const notifierType = config.notifierType.toLowerCase() //Seren
+const notifierType = config.notifierType.toLowerCase() || config.data.notifierType.toLowerCase() //Seren
 
 if(notifierType !== 'toast' && notifierType !== 'balloon') console.log('[Tera Notifier] Error in config. Use toast or balloon only'); //Seren
 
