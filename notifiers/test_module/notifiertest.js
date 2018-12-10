@@ -1,5 +1,5 @@
 module.exports = function notifTest(dispatch) {
-	const notifier = dispatch.require.tera-notifier
+	const notifier = dispatch.require.notifier
 	
 	notifier.notify({
 		title: 'Tera Notification',

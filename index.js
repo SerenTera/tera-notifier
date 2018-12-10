@@ -1,7 +1,7 @@
-const Notifiers=require('./notifiers/notify')
+const Notifiers=require('./notifiers/notify'),
 	path=require('path'),
 	decodehtml=require('./decodeHTML'),
-	AFK_TIMEOUT = require('./config.json').AFK_TIMEOUT 
+	AFK_TIMEOUT = require('./config.json').AFK_TIMEOUT || require('./config.json').data.AFK_TIMEOUT
 
 //List of raw packets to check for afk status
 const packetcheck=[
@@ -101,12 +101,12 @@ class Notifier {
 	}
 }
 
-let nmap = new WeakMap() //Uses Pinkie-Pie's Command's require function, changed some var names because idk if conflicts will occur.(probably not tho)
+let map = new WeakMap() 
 
 module.exports = function Require(dispatch) {
-	if(nmap.has(dispatch.base)) return nmap.get(dispatch.base)
+	if(map.has(dispatch.dispatch)) return map.get(dispatch.dispatch) //Update .base to .dispatch
 
 	let notifier = new Notifier(dispatch)
-	nmap.set(dispatch.base, notifier)
+	map.set(dispatch.dispatch, notifier)
 	return notifier
 }
