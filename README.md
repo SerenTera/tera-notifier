@@ -35,8 +35,7 @@ Similar to command module, simply use `.message()` or `.messageafk()` methods as
 
 	
 module.exports = function myMod(mod) {	
-    const notifier = mod.require.notifier //If using Caali's Proxy
-    const notifier = require('../tera-notifier') //If using Pinkie's OR legacy-type proxy for some reason
+    const notifier = mod.require.notifier 
     
     notifier.message('Hello world! uwu owo')  //standard instant notification
     
@@ -53,8 +52,7 @@ module.exports = function myMod(mod) {
 const path=require('path')		//Only if you intend to have custom icon
 	
 module.exports = function myMod(mod) {	
-    const notifier = mod.require.notifier //If using Caali's Proxy
-    const notifier = require('../tera-notifier') //If using Pinkie's OR legacy-type proxy for some reason
+    const notifier = mod.require.notifier
     
 
     notifier.notify({
