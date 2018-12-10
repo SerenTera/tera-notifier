@@ -1,4 +1,7 @@
 {
-	"notifierType":"toast",
-	"AFK_TIMEOUT":60000
+    "version": 1,
+    "data": {
+        "notifierType": "toast",
+        "AFK_TIMEOUT": 60000
+    }
 }
