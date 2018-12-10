@@ -53,8 +53,9 @@ module.exports = function myMod(mod) {
 const path=require('path')		//Only if you intend to have custom icon
 	
 module.exports = function myMod(mod) {	
-    const notifier = mod.require.tera-notifier	//Important
-
+    const notifier = mod.require.notifier //If using Caali's Proxy
+    const notifier = require('../tera-notifier') //If using Pinkie's OR legacy-type proxy for some reason
+    
 
     notifier.notify({
 		title: 'Tera notify',
