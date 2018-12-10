@@ -1,8 +1,9 @@
 {
     "files": {
+        "config.json": "4c34b47ddb83543211d20be640a24e65375a6993dfa9d4a629562563f9110a90",
         "decodeHTML.js": "84f0249db0d740d566165f9ef182956ded55d900efb15423c3610f598a8e3ae5",
         "index.js": "adaf1bc933b60fa8455ba2f5642cb113a7098e5dfee283407b3f853a7911a3e6",
-        "module.json": "0c30375a545623735c0624b4016878e3b81c035698be1b2cd79676c05614166d",
+        "module.json": "6bcd5301b644425d398e8f2c6453a0289924aabc818baa0eecd358711c604192",
         "settings_migrator.js": "ed91ed328463245d58273c1d8fd1aab6226ea5f8b6fe4ca6616126049a8d0066",
         "tera.png": "ee141b6378e25440503ce1d5fac5da30925c28b898baeaa5650415a609b0f387",
         "notifiers/notify.js": "5e1f97606a6b96325587460ac635756e9e095b8c274c1dd2277ea7349c70cdfe",
