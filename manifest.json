@@ -1,11 +1,12 @@
 {
     "files": {
+        "config.json": "4c34b47ddb83543211d20be640a24e65375a6993dfa9d4a629562563f9110a90",
         "decodeHTML.js": "84f0249db0d740d566165f9ef182956ded55d900efb15423c3610f598a8e3ae5",
-        "index.js": "97ab794f6b88c5c42429b29e46a43656413432ee74171c000e50135510a02076",
+        "index.js": "b87891e53a297fd6ff3db81f34a48301ab01eb468575de515e00015333b4b568",
         "module.json": "07fbb256ac5e344029caf9bcca8cd7c5522d3556477cf3c014671bd89ecf41d2",
         "settings_migrator.js": "ed91ed328463245d58273c1d8fd1aab6226ea5f8b6fe4ca6616126049a8d0066",
         "tera.png": "ee141b6378e25440503ce1d5fac5da30925c28b898baeaa5650415a609b0f387",
-        "notifiers/notify.js": "720015df3aa891057ef50530d25e5da31b06cf74f2e6fc977a1195c431ad1f08",
+        "notifiers/notify.js": "5e1f97606a6b96325587460ac635756e9e095b8c274c1dd2277ea7349c70cdfe",
         "notifiers/dependencies/growly/lib/gntp.js": "190b69962a89cc91f26abe85d7099bfaa569b59fc945ba0be86a0c331cff7607",
         "notifiers/dependencies/growly/lib/growly.js": "86065ee95703286ff0923be3b72d8dc51d1bfac7813d250147fc47dcee6ab9df",
         "notifiers/dependencies/node-semver/range.bnf": "ed628fdaff64be366d07f6cc4559eae4de109826f743ea7f5e1588c370bca49a",

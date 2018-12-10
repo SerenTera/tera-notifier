@@ -29,7 +29,7 @@ let afktime=0,			//Set to false always.
 class Notifier {
 	constructor(dispatch) {
 		this.dispatch = dispatch
-		AFK_TIMEOUT = dispatch.settings.AFK_TIMEOUT
+		const AFK_TIMEOUT = dispatch.settings.AFK_TIMEOUT
 /////Dispatches
 		for(let hook of packetcheck) {
 			dispatch.hook(hook,'raw',{filter:{fake:false}}, () => { 
