@@ -1,5 +1,3 @@
-require('./settings_migrator')
-
 const Notifiers=require('./notifiers/notify'),
 	path=require('path'),
 	decodehtml=require('./decodeHTML')
