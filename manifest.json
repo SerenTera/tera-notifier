@@ -1,11 +1,15 @@
 {
     "files": {
         "decodeHTML.js": "84f0249db0d740d566165f9ef182956ded55d900efb15423c3610f598a8e3ae5",
-        "index.js": "adaf1bc933b60fa8455ba2f5642cb113a7098e5dfee283407b3f853a7911a3e6",
-        "module.json": "6bcd5301b644425d398e8f2c6453a0289924aabc818baa0eecd358711c604192",
+        "index.js": "aa0df08f9a255729e500134fbc1d86dc1e79ff34ba07fa57bc47548a59689322",
+        "module.json": "58e76f9b05f8466be7ddd4369891e40f0239875b7c8c158465448b531fe0104c",
         "settings_migrator.js": "ed91ed328463245d58273c1d8fd1aab6226ea5f8b6fe4ca6616126049a8d0066",
         "tera.png": "ee141b6378e25440503ce1d5fac5da30925c28b898baeaa5650415a609b0f387",
         "notifiers/notify.js": "5e1f97606a6b96325587460ac635756e9e095b8c274c1dd2277ea7349c70cdfe",
+        "notifiers/dependencies/activeWindowTitle/activeWindowTitle-ia32.node": "22791ce45312dbf4507eab5d87635acd288ddcea737625d313119c827fba6aad",
+        "notifiers/dependencies/activeWindowTitle/activeWindowTitle-x64.node": "838fe815d87869e95b015a7b27e6d46116a107c97331baf461a4d5a56eb85aa1",
+        "notifiers/dependencies/activeWindowTitle/activeWindowTitle.node": "838fe815d87869e95b015a7b27e6d46116a107c97331baf461a4d5a56eb85aa1",
+        "notifiers/dependencies/activeWindowTitle/index.js": "dd65f5a318d7a1149f67f710d26996289cc631a240e136d2f65bd59d4c802107",
         "notifiers/dependencies/growly/lib/gntp.js": "190b69962a89cc91f26abe85d7099bfaa569b59fc945ba0be86a0c331cff7607",
         "notifiers/dependencies/growly/lib/growly.js": "86065ee95703286ff0923be3b72d8dc51d1bfac7813d250147fc47dcee6ab9df",
         "notifiers/dependencies/node-semver/range.bnf": "ed628fdaff64be366d07f6cc4559eae4de109826f743ea7f5e1588c370bca49a",

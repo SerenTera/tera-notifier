@@ -3,72 +3,33 @@ const Notifiers = require('./notifiers/notify'),
 	path = require('path'),
 	decodehtml = require('./decodeHTML')
 	
-try {
-	const AFK_TIMEOUT = JSON.parse(fs.readFileSync(path.join(__dirname,'config.json'))).data.AFK_TIMEOUT
-}
-catch(e) {
-	const AFK_TIMEOUT = 60000
-}
-
-//List of raw packets to check for afk status
-const packetcheck=[
-'C_CHAT',
-'C_PLAYER_LOCATION',
-//'C_TRADE_BROKER_WAITING_ITEM_LIST_NEW',
-'C_START_SKILL',
-'C_WHISPER',
-'S_LOAD_TOPO',
-//'C_NPC_CONTACT',
-//'S_TRADE_BROKER_HISTORY_ITEM_LIST',
-//'C_TRADE_BROKER_REGISTERED_ITEM_LIST'
-]
-
-//Defaults:
-let afktime=0,			//Set to false always.
-	time=Date.now(), 	//time=last active detected time
-	iconfile='tera.png',//File name of the icon file to use for notification. Put file at tera-notifier base path. ie: tera-proxy/bin/node-modules/tera-notifier/tera.png for example.
-						//File must be png and cannot exceed 1024x1024 px, or over over 200Kb.
-
-	debug=false		//debug
-
-
-
+require('./notifiers/dependencies/activeWindowTitle')
 
 class Notifier {
 	constructor(dispatch) {
-		this.dispatch = dispatch
-/////Dispatches
-		for(let hook of packetcheck) {
-			dispatch.hook(hook,'raw',{filter:{fake:false}}, () => { 
-				time=Date.now()
-				if(debug) console.log(afktime)
-			})
-		}
-
-		dispatch.hook('S_RESPONSE_GAMESTAT_PONG','raw',() => { //Only indicator of afking?
-			afktime = Date.now()-time
-			if(debug) console.log(afktime)
-		})
+		this.dispatch = dispatch;
 	}
+	
 /////Exports
 	notifyafk(args,afktimeout) {
-		if(afktimeout===undefined || isNaN(afktimeout)) {
-			afktimeout=AFK_TIMEOUT
-			console.log('timeout used for notifier.notifyafk is undefined/NaN. Set to default timeout')
+		if(afktimeout !== undefined) console.log('[TERA NOTIFIER] One or more of your modules is still using timeout for notifyafk, which is deprecated.')
+			
+		try{	
+			if(activeWindow.title() !== this.dispatch.settings.processTitle) {
+				if(!args.icon) args.icon = path.join(__dirname,this.dispatch.settings.iconfile)
+		
+				args.message = decodehtml.decodeHTMLEntities(args.message)
+				Notifiers.notify(args)
+				return true
+			}
+			else
+				return false
 		}
-		
-		if(afktime < parseInt(afktimeout)) return
-		
-		else {
-			if(!args.icon) args.icon=path.join(__dirname,iconfile)
-		
-			args.message = decodehtml.decodeHTMLEntities(args.message)
-			Notifiers.notify(args)
-		}
+		catch(e) {console.log(e)}
 	}
 
 	notify(args) {
-		if(!args.icon) args.icon=path.join(__dirname,iconfile)
+		if(!args.icon) args.icon = path.join(__dirname,this.dispatch.settings.iconfile)
 			
 		args.message = decodehtml.decodeHTMLEntities(args.message)	
 		Notifiers.notify(args)
@@ -81,31 +42,40 @@ class Notifier {
 			title: 'TERA',
 			message: msg,
 			wait:false, 
-			icon:path.join(__dirname,iconfile),
+			icon:path.join(__dirname,this.dispatch.settings.iconfile),
 			sound:'Notification.IM', 
 		})
 	}
 	
 	messageafk(msg,afktimeout) {
-		if(afktimeout===undefined || isNaN(afktimeout)) {
-			afktimeout=AFK_TIMEOUT
-			console.log('timeout used for notifier.notifyafk is undefined/NaN. Set to default timeout')
-		}
+		if(afktimeout !== undefined) console.log('[TERA NOTIFIER] One or more of your modules is still using timeout for messageafk, which is deprecated.')
 		
-		if(afktime < parseInt(afktimeout)) return
-		
-		else {
-			msg = decodehtml.decodeHTMLEntities(msg);
-			Notifiers.notify({
-				title: 'TERA',
-				message: msg,
-				wait:false, 
-				icon:path.join(__dirname,iconfile),
-				sound:'Notification.IM', 
-			})
+		//In case our little program run into any errors.
+		try {
+			if(activeWindow.title() !== this.dispatch.settings.processTitle) {
+				this.message(msg)
+				return true
+			}
+			else 
+				return false
 		}
+		catch(e) {console.log(e)}
 	}
+	
 }
+
+function sendAlert(msg){
+	msg = decodehtml.decodeHTMLEntities(msg);
+		
+	Notifiers.notify({
+		title: 'TERA',
+		message: msg,
+		wait:false, 
+		icon:path.join(__dirname,this.dispatch.settings.iconfile),
+		sound:'Notification.IM', 
+	})
+}
+
 
 let map = new WeakMap() 
 
