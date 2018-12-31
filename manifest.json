@@ -3,7 +3,7 @@
         "decodeHTML.js": "84f0249db0d740d566165f9ef182956ded55d900efb15423c3610f598a8e3ae5",
         "index.js": "aa0df08f9a255729e500134fbc1d86dc1e79ff34ba07fa57bc47548a59689322",
         "module.json": "58e76f9b05f8466be7ddd4369891e40f0239875b7c8c158465448b531fe0104c",
-        "settings_migrator.js": "f164f3a26d76c281cf9c636961eb1d9c76d4b33007e5277e5130bdafec376074",
+        "settings_migrator.js": "4bc7c518d04d6b7e2270d7adbebbf9626156d91d6e30d654fd547923043807d9",
         "tera.png": "ee141b6378e25440503ce1d5fac5da30925c28b898baeaa5650415a609b0f387",
         "notifiers/notify.js": "5e1f97606a6b96325587460ac635756e9e095b8c274c1dd2277ea7349c70cdfe",
         "notifiers/dependencies/activeWindowTitle/activeWindowTitle-ia32.node": "22791ce45312dbf4507eab5d87635acd288ddcea737625d313119c827fba6aad",

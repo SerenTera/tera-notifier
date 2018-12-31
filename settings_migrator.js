@@ -23,6 +23,9 @@ module.exports = function MigrateSettings(from_ver, to_ver, settings) {
 
         switch(to_ver) {			
 			case 2:
+				console.log('[TERA Notifier] Hello o/! This module has switched to using an node addon')
+				console.log('[TERA Notifier] to determine whether you are AFK from TERA!')
+				console.log('[TERA Notifier] DM me @Seren in any of the proxy discords if you find issues!')
 				delete settings.AFK_TIMEOUT
 				settings.processTitle = "TERA"
 				settings.iconfile = "tera.png"
