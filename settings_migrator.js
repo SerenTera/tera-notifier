@@ -1,8 +1,9 @@
 "use strict"
 
 const DefaultSettings = {
-	"notifierType":"toast",
-	"AFK_TIMEOUT":60000
+	notifierType: "toast",
+	processTitle: "TERA",
+	iconfile: "tera.png"
 }
 
 module.exports = function MigrateSettings(from_ver, to_ver, settings) {
@@ -13,7 +14,21 @@ module.exports = function MigrateSettings(from_ver, to_ver, settings) {
         // No config file exists, use default settings
         return DefaultSettings;
     } else {
-        // Migrate from older version (using the new system) to latest one
-        throw new Error('So far there is only one settings version and this should never be reached!');
+		
+		if (from_ver + 1 < to_ver) {
+
+            settings = MigrateSettings(from_ver, from_ver + 1, settings);
+            return MigrateSettings(from_ver + 1, to_ver, settings);
+        }
+
+        switch(to_ver) {			
+			case 2:
+				delete settings.AFK_TIMEOUT
+				settings.processTitle = "TERA"
+				settings.iconfile = "tera.png"
+				return settings
+				break
+		}
+		
     }
 }
