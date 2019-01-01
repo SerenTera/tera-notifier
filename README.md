@@ -26,7 +26,7 @@ Edit config.json for user configs. Do not touch anything else.
 ## Developing modules to use tera-notifier
 If you are not looking to develop other modules to use tera-notifier, then this portion is not necessary for you.
 
-Refer to 'Relavant guide part from Original readme' section for all available properties you can use to craft the notification
+Refer to `Original readme` for all available properties you can use to craft the notification
 
 #### Simple method
 Similar to command module, simply use `.message()` or `.messageafk()` methods as examplified below:
@@ -43,6 +43,7 @@ module.exports = function myMod(mod) {
 - `.messageafk('message')` : Checks for afk status before sending a notification upon being called. Default with sound and tera logo, notification is titled 'TERA'. 
 
 #### Complex methods for toast (Win 8.1/10)
+Use `notifier.notify()` to customize your notifications with some options available.
 ```
 const path=require('path')   //Only if you intend to have custom icon
 	
@@ -53,9 +54,9 @@ module.exports = function myMod(mod) {
 		title: 'Tera notify',
 		message: 'Party message:VHHM>H/D Leader:xaxaxa(3/5)',
 		icon: path.join(__dirname,'tera.png'), //Optional. Use absolute path. If not used, there will be a default tera logo.
-		wait:false, //False = Time out on its own. True = Stay around until 'remove' property is called.
-		sound:'Notification.IM', //Or use true for default sound. Or use false for silence.
-		id:1, //Useful to remove the previous notifcation when you code. Refer to this id when you call 'remove' property
+		wait:false, 			       //False = Time out on its own. True = Stay around until 'remove' property is called.
+		sound:'Notification.IM',               //Or use true for default sound. Or use false for silence.
+		id:1,                                  //Useful to remove the previous notifcation when you code. Refer to this id when you call 'remove' property
      })
 }
 ```
@@ -76,9 +77,9 @@ module.exports = function myMod(mod) {
 	title: 'Tera notify',
 	message: 'Party message:VHHM>H/D Leader:xaxaxa(3/5)',
 	icon: path.join(__dirname,'tera.png'), //Optional. Use absolute path. If not used, there will be a default tera logo.
-	wait:false, //False = Time out on its own. True = Stay around until 'remove' property is called.
-	sound:'Notification.IM', //Or use true for default sound. Or use false for silence.
-	id:1, //useful to remove the previous notifcation when you code. Refer to this id when you call 'remove' property
+	wait:false,                            //False = Time out on its own. True = Stay around until 'remove' property is called.
+	sound:'Notification.IM',               //Or use true for default sound. Or use false for silence.
+	id:1,                                  //useful to remove the previous notifcation when you code. Refer to this id when you call 'remove' property
     })
 ```
 #### For windows 7 and below
